@@ -40,7 +40,9 @@ public class RandomizedSet {
 
 	/**
 	 * Key idea - Use abs for negative values after doing mod to find bucket position.
-	 * Use Node wrapper around List of values; Rest of the code follow.s
+	 * Use Node wrapper around List of values; Rest of the code follows.
+	 * Maintain the bucket index with values for randomised selection.
+	 * Remove deleted bucket index lazily during random selection.
 	 * @author nisheedh
 	 *
 	 */
