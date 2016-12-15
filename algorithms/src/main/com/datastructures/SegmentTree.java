@@ -7,6 +7,16 @@ package com.datastructures;
  * Use array for storing the tree. Size of array  2^(h+1) -1 . where h is the height
  * of the tree. h is log(n). n leaf nodes store original array. n-1 internal nodes store
  * the sum for the intervals.
+ * Root of the tree has sum of all values in range.
+ * Left node is 2 (i +1) - 1
+ * Right node is 2 (i + 1)
+ * Add the node if beg == end
+ * else recursively add left and right nodes. 
+ * Store the sum in current node as buildLeft + buildRight.
+ * Use the same logic in update value.
+ * Compute Logic
+ * Return value if current range falls between required range
+ * else recursively find value for left and right range add it.
  * @author nraveend
  *
  */
