@@ -30,70 +30,74 @@ package com.backtracking;
  */
 public class AndroidLockPatterns {
 
-  /**
-   * Key idea is to compute the values for one corner, middle and one top
-   * middle. Using symmetry values for all other cells can be computed.
-   * 
-   * @param m
-   * @param n
-   * @return
-   */
-  public int numberOfPatterns(int m, int n) {
-    int total = 0;
-    boolean[] visited = new boolean[9];
-    for (int numKeys = m; numKeys <= n; ++numKeys) {
-      int prev = 0;
-      visited[prev] = true;
-      int numNodesVisited = 1;
-      total += 4 * visit(prev, visited, numKeys, numNodesVisited);
-      visited[prev] = false;
-      
-      prev = 1;
-      visited[prev] = true;
-      total += 4 * visit(prev, visited, numKeys, numNodesVisited);
-      visited[prev] = false;
-      
-      //Visit middle element
-      prev = 4;
-      visited[prev] = true;
-      total += visit(prev, visited, numKeys, numNodesVisited);
-      visited[prev] = false;
-    }
-    return total;
-  }
+	/**
+	 * 
+	 * Symmetry - Do you need to compute for all nodes ? Recursive backtracking
+	 * for every node . visit and canvisit. adjacent nodes how to identify ?
+	 * nodes in adjacent rows ? 
+	 * for all other nodes check if mid is visited
+	 * 
+	 * Key idea is to compute the values for one corner, middle and one top
+	 * middle. Using symmetry values for all other cells can be computed.
+	 * 
+	 * @param m
+	 * @param n
+	 * @return
+	 */
+	public int numberOfPatterns(int m, int n) {
+		int total = 0;
+		boolean[] visited = new boolean[9];
+		for (int numKeys = m; numKeys <= n; ++numKeys) {
+			int prev = 0;
+			visited[prev] = true;
+			int numNodesVisited = 1;
+			total += 4 * visit(prev, visited, numKeys, numNodesVisited);
+			visited[prev] = false;
 
-  private int visit(int prev, boolean[] visited, int numKeys, int numNodesVisited) {
-    if (numKeys == numNodesVisited) {
-      return 1;
-    }
-    
-    int total = 0;
-    
-    for (int i = 0; i < 9; ++i) {
-      if (canVisit(i, prev, visited)) {
-        visited[i] = true;
-        total += visit(i, visited, numKeys, numNodesVisited + 1);
-        visited[i] = false;
-      }
-    }
-    return total;
-  }
+			prev = 1;
+			visited[prev] = true;
+			total += 4 * visit(prev, visited, numKeys, numNodesVisited);
+			visited[prev] = false;
 
-  private boolean canVisit(int to, int from, boolean[] visited) {
+			// Visit middle element
+			prev = 4;
+			visited[prev] = true;
+			total += visit(prev, visited, numKeys, numNodesVisited);
+			visited[prev] = false;
+		}
+		return total;
+	}
+
+	private int visit(int prev, boolean[] visited, int numKeys, int numNodesVisited) {
+		if (numKeys == numNodesVisited) {
+			return 1;
+		}
+
+		int total = 0;
+
+		for (int i = 0; i < 9; ++i) {
+			if (canVisit(i, prev, visited)) {
+				visited[i] = true;
+				total += visit(i, visited, numKeys, numNodesVisited + 1);
+				visited[i] = false;
+			}
+		}
+		return total;
+	}
+
+	private boolean canVisit(int to, int from, boolean[] visited) {
     if (visited[to]) {
       return false;
     } else if ((from + to) % 2 == 1) { // handle adjacent and knights . sum will be odd 0-1, 1-4, 0-7
+      return true;
+    }// Handle all diagonals . Check if entries are on adjacent rows
+    else if (Math.abs(from % 3 - to % 3) == 1) {
       return true;
     }
     
     //find lines passing through middle.
     int mid = (from + to) / 2;
-    if (mid == 4) {
-      return visited[mid];
-      // Handle all diagonals . Check if entries are on adjacent rows
-    } else if (Math.abs(from % 3 - to % 3) == 1) {
-      return true;
-    }
+      
     // Handle all other cases
     return visited[mid];
   }
