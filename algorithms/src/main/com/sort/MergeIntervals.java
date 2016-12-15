@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import com.leetcode.Interval;
 
 /**
  * Given a collection of intervals, merge all overlapping intervals.
