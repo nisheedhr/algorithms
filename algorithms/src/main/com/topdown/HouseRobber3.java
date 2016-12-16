@@ -1,7 +1,7 @@
 package com.topdown;
 
 /**
- * The thief has found himself a new place for his thievery again. 
+ * The thief has found himself a new place for his theft again. 
  * There is only one entrance to this area, called the "root."
  *  Besides the root, each house has one and only one parent house.
  *   After a tour, the smart thief realized that "all houses in this place forms a binary tree". 
@@ -23,38 +23,40 @@ public class HouseRobber3 {
   }
   
   private static class Result {
-    int k1;
-    int k2;
+    int prev;
+    int prevPrev;
   }
   /**
    * Extend the idea of house robber 1
-   * Do postOrder traversal of tree with kMinus1 and kMinus2 as auxiliary nodes.
+   * Do postOrder traversal of tree with prev and prevPrev as auxiliary nodes.
+   * res.prev = Math.max(node.val + res.prevPrev + lPrevPrev, rPrev + lPrev);
+    res.prevPrev = lPrev + rPrev;
    * @param root
    * @return
    */
   public int rob(TreeNode root) {
     Result res = new Result();
     postOrderRob(root, res);
-    return Math.max(res.k1, res.k2);
+    return res.prev;
   }
   
   private void postOrderRob(TreeNode node, Result res) {
     if (node == null) {
-      res.k1 = 0;
-      res.k2 = 0;
+      res.prev = 0;
+      res.prevPrev = 0;
       return;
     }
     
     postOrderRob(node.left, res);
     
-    int lk1 = res.k1;
-    int lk2 = res.k2;
+    int lPrev = res.prev;
+    int lPrevPrev = res.prevPrev;
     
     postOrderRob(node.right, res);
     
-    int rk1 = res.k1;
-    res.k1 = Math.max(node.val + res.k2 + lk2, res.k1 + lk1);
-    res.k2 = lk1 + rk1;
+    int rPrev = res.prev;
+    res.prev = Math.max(node.val + res.prevPrev + lPrevPrev, rPrev + lPrev);
+    res.prevPrev = lPrev + rPrev;
   }
 
 }
