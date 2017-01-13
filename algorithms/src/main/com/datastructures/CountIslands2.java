@@ -48,6 +48,16 @@ Can you do it in time complexity O(k log mn), where k is the length of the posit
  */
 public class CountIslands2 {
 
+    /**
+     * Use union find algorithm.
+     * Keep track of numLands and increment it whenever a land is added.
+     * Do union in all 4 directions whenever a slot is made land.
+     * number of islands = number of lands - number of unions.
+     * @param m
+     * @param n
+     * @param positions
+     * @return
+     */
 	public List<Integer> numIslands2(int m, int n, int[][] positions) {
 		byte[] grid = new byte[m * n];
 		int[] parent = new int[m * n];

@@ -16,6 +16,12 @@ public class BinaryIndexTree2D {
 
 	private int[][] bit;
 
+	/**
+	 * IT EXPECTS UPDATE FUNCTION TO SEND DIFF VALUE I.E OLD VAL - NEW VAL
+	 * Implementation in NumMatrix is correct one where it COMPUTES the new value
+	 * from the old value.
+	 * @param arr
+	 */
 	public BinaryIndexTree2D(int arr[][]) {
 		this.bit = new int[arr.length][arr[0].length];
 		
