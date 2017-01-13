@@ -24,6 +24,7 @@ public class FindMissingNumbers {
 
 	/**
 	 * Iterate over array and mark all positions with numbers as 0.
+	 * mark recursively marks all positions.
 	 * In second iteration add positions to output which has non zero value.
 	 * @param nums
 	 * @return

@@ -24,6 +24,8 @@ public class GenerateAbbrvn {
 		}
 	}
 	/**
+	 * BOTTOM UP approach.
+	 * Build the solution from one character.
 	 * Use recursive calls. by adding char and number to existing string list
 	 * Maintain 2 lists. One for text and another for numeric.
 	 * Text is built by appending char to previous text and numeric list.
