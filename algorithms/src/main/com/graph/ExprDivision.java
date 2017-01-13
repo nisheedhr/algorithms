@@ -1,6 +1,5 @@
 package com.graph;
 
-import java.awt.geom.CubicCurve2D;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -46,7 +45,7 @@ public class ExprDivision {
   }
   
   /**
-   * Key idea is to use BFS gra[h traversal to compute value.
+   * Key idea is to use BFS graph traversal to compute value.
    * If no path return -1.
    * @param equations
    * @param values

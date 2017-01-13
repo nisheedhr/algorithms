@@ -28,7 +28,10 @@ public class LongestIncreasingMatrixPath {
 
   /**
    * Key idea is to start from smallest number and find maxLen. Use DP to store
-   * all adjacent paths as well. Return max of all paths
+   * all adjacent paths as well. Return max of all paths.
+   * Use a priority queue to store the cell value.
+   * Compute the max length for each entry in priority queue by caching.
+   * For a cell max value is  1 + max (left, right, up, down);
    * 
    * @param matrix
    * @return

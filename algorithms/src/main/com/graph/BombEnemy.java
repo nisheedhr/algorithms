@@ -22,8 +22,11 @@ Credits:
 public class BombEnemy {
 
 	/**
+	 * Alternate approach from each enemy cell use DFS and mark all cells which can be visited.
+	 * Return max of everything.
 	 * Compute the number of enemies which can be killed for each empty cell and return the max value.
 	 * For each cell compute the enemies which can be killed in all 4 directions.
+	 * 
 	 * @param grid
 	 * @return
 	 */

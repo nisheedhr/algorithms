@@ -4,7 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * A linked list is given such that each node contains an additional random pointer which could point to any node in the list or null.
+ * A linked list is given such that each node contains an additional random pointer 
+ * which could point to any node in the list or null.
 
 Return a deep copy of the list.
  * @author nisheedh
@@ -23,7 +24,8 @@ public class RandomListNodeCopy {
     }
     
     /**
-     * Use DFS to copy each node .
+     * Driver loop should use list traversal to call copyNode and build the next link
+     * copyNode should use DFS to copy each random node .
      * Use visited map to keep track of visited nodes.
      * copyNode should recursively build all random links.
      * @param head

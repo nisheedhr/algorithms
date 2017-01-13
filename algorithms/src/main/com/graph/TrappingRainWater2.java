@@ -38,7 +38,11 @@ public class TrappingRainWater2 {
   /**
    *  Start from boundary and move inward. Add all cells to a priority queue
    *  Pop one with min height , compute area and add its neighbors. 
-   *  While adding neigbor its height is set as max of current height and neighbor height.
+   *  While adding neighbor its height is set as max of current height and neighbor height.
+   *  Area is computed as difference between cell height and heightMap. cell height is max of 
+   *  the height
+   *  of smallest neighbor or actual height in the height.
+   *  Smallest neighbor is guaranteed by the priority queue.
    * @param heightMap
    * @return
    */
