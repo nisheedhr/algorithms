@@ -51,9 +51,14 @@ public class ValidBST {
     private boolean isValidBST(TreeNode node, TreeNode minNode, TreeNode maxNode) {  
         if (node == null) {
             return true;
+            // Checks the nodes on left subtree
         } else if ((minNode == null || node.val > minNode.val) && 
+                   // Checks the nodes on right sub tree
                 (maxNode == null || node.val < maxNode.val)) {
-            return isValidBST(node.left, minNode, node) && isValidBST(node.right, node, maxNode);
+            // for left subtree minNode is always null. Max node will be parent
+            return isValidBST(node.left, minNode, node) &&
+                // for right sub tree max node will be null. Min node will be parent.
+                isValidBST(node.right, node, maxNode);
         } else {
             return false;
         }
